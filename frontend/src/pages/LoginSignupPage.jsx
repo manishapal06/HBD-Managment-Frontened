@@ -1,3 +1,4 @@
+// ...existing code...
 import React, { useState } from 'react';
 import { Building2, Mail, Lock, User, Phone, Eye, EyeOff, AlertCircle, CheckCircle, UserCircle, Shield, Stethoscope, Users } from 'lucide-react';
 
@@ -118,14 +119,14 @@ const LoginSignupPage = () => {
         console.log('Login:', { ...formData, role: selectedRole });
         setSuccess(true);
         setTimeout(() => {
-          alert(${roleTitle} login successful! Redirecting to dashboard...);
+          alert(`${roleTitle} login successful! Redirecting to dashboard...`);
           setSuccess(false);
         }, 1500);
       } else {
         console.log('Signup:', { ...formData, role: selectedRole });
         setSuccess(true);
         setTimeout(() => {
-          alert(${roleTitle} account created successfully!);
+          alert(`${roleTitle} account created successfully!`);
           setSuccess(false);
           setIsLogin(true);
         }, 1500);
@@ -207,9 +208,9 @@ const LoginSignupPage = () => {
                 <button
                   key={role.id}
                   onClick={() => handleRoleSelect(role.id)}
-                  className={bg-white rounded-xl p-6 border-2 ${role.borderColor} ${role.hoverBorder} hover:shadow-lg transition-all group}
+                  className={`bg-white rounded-xl p-6 border-2 ${role.borderColor} ${role.hoverBorder} hover:shadow-lg transition-all group`}
                 >
-                  <div className={w-16 h-16 bg-gradient-to-br ${role.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform}>
+                  <div className={`w-16 h-16 bg-gradient-to-br ${role.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-800 mb-2">{role.title}</h3>
@@ -219,7 +220,7 @@ const LoginSignupPage = () => {
             })}
           </div>
 
-          { Info Section }
+          {/* Info Section */}
           <div className="mt-12 bg-white rounded-xl p-6 border border-blue-200 shadow-sm">
             <div className="flex items-start space-x-3">
               <AlertCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
@@ -240,7 +241,7 @@ const LoginSignupPage = () => {
 
   // Login/Signup Form
   const currentRole = getCurrentRole();
-  const Icon = currentRole.icon;
+  const Icon = currentRole?.icon ?? Building2;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
@@ -256,14 +257,14 @@ const LoginSignupPage = () => {
           </button>
 
           {/* Role Badge */}
-          <div className={${currentRole.bgColor} rounded-lg p-4 mb-6 border ${currentRole.borderColor}}>
+          <div className={`${currentRole?.bgColor} rounded-lg p-4 mb-6 border ${currentRole?.borderColor}`}>
             <div className="flex items-center space-x-3">
-              <div className={w-12 h-12 bg-gradient-to-br ${currentRole.color} rounded-lg flex items-center justify-center}>
+              <div className={`w-12 h-12 bg-gradient-to-br ${currentRole?.color} rounded-lg flex items-center justify-center`}>
                 <Icon className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800">{currentRole.title}</h3>
-                <p className="text-sm text-gray-600">{currentRole.description}</p>
+                <h3 className="font-bold text-gray-800">{currentRole?.title}</h3>
+                <p className="text-sm text-gray-600">{currentRole?.description}</p>
               </div>
             </div>
           </div>
@@ -318,7 +319,7 @@ const LoginSignupPage = () => {
             <p className="text-gray-600 text-sm mt-1">
               {isLogin 
                 ? 'Enter your credentials to continue' 
-                : Register as ${currentRole.title}}
+                : `Register as ${currentRole?.title}`}
             </p>
           </div>
 
@@ -339,7 +340,7 @@ const LoginSignupPage = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Enter your full name"
-                    className={w-full pl-10 pr-4 py-2 border ${errors.name ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                    className={`w-full pl-10 pr-4 py-2 border ${errors.name ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
                 </div>
                 {errors.name && (
@@ -363,7 +364,7 @@ const LoginSignupPage = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Enter your email"
-                  className={w-full pl-10 pr-4 py-2 border ${errors.email ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                  className={`w-full pl-10 pr-4 py-2 border ${errors.email ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 />
               </div>
               {errors.email && (
@@ -386,7 +387,7 @@ const LoginSignupPage = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Enter your password"
-                  className={w-full pl-10 pr-12 py-2 border ${errors.password ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                  className={`w-full pl-10 pr-12 py-2 border ${errors.password ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 />
                 <button
                   type="button"
@@ -417,7 +418,7 @@ const LoginSignupPage = () => {
                     value={formData.hospitalName}
                     onChange={handleInputChange}
                     placeholder="Enter hospital name"
-                    className={w-full pl-10 pr-4 py-2 border ${errors.hospitalName ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                    className={`w-full pl-10 pr-4 py-2 border ${errors.hospitalName ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
                 </div>
                 {errors.hospitalName && (
@@ -442,7 +443,7 @@ const LoginSignupPage = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+1 (555) 123-4567"
-                    className={w-full pl-10 pr-4 py-2 border ${errors.phone ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                    className={`w-full pl-10 pr-4 py-2 border ${errors.phone ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
                 </div>
                 {errors.phone && (
@@ -467,7 +468,7 @@ const LoginSignupPage = () => {
                       value={formData.age}
                       onChange={handleInputChange}
                       placeholder="Age"
-                      className={w-full px-4 py-2 border ${errors.age ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                      className={`w-full px-4 py-2 border ${errors.age ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     />
                     {errors.age && (
                       <p className="text-red-500 text-xs mt-1 flex items-center">
@@ -483,7 +484,7 @@ const LoginSignupPage = () => {
                       name="gender"
                       value={formData.gender}
                       onChange={handleInputChange}
-                      className={w-full px-4 py-2 border ${errors.gender ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500}
+                      className={`w-full px-4 py-2 border ${errors.gender ? 'border-red-300' : 'border-blue-300'} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     >
                       <option value="">Select</option>
                       <option value="male">Male</option>
@@ -529,7 +530,7 @@ const LoginSignupPage = () => {
             {/* Submit Button */}
             <button
               onClick={handleSubmit}
-              className={w-full bg-gradient-to-r ${currentRole.color} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all}
+              className={`w-full bg-gradient-to-r ${currentRole?.color} text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all`}
             >
               {isLogin ? 'Login' : 'Create Account'}
             </button>
@@ -553,3 +554,4 @@ const LoginSignupPage = () => {
 };
 
 export default LoginSignupPage;
+// ...existing code...

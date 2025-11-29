@@ -164,11 +164,11 @@ const NursePanel = () => {
     alert('Vitals updated successfully!');
   };
 
-  const handleAddNote = () => {
+   const handleAddNote = () => {
     if (!selectedPatient || !newNote.trim()) return;
     
     const now = new Date();
-    const dateStr = ${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')};
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     
     const updatedPatients = patients.map(p => {
       if (p.id === selectedPatient.id) {
@@ -203,10 +203,10 @@ const NursePanel = () => {
       recovering: <Activity className="w-3 h-3" />
     };
     
-    return (
-      <span className={px-3 py-1 rounded-full text-xs font-semibold border flex items-center space-x-1 ${styles[status]}}>
+     return (
+      <span className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center space-x-1 ${styles[status]}`}>
         {icons[status]}
-        <span>{status.toUpperCase()} </span>
+        <span>{status.toUpperCase()}</span>
       </span>
     );
   };
