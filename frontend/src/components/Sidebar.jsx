@@ -1,55 +1,69 @@
-import React, { useState } from 'react';
-import { 
-  Home, Users, Calendar, FileText, Activity, 
-  Stethoscope, Pill, Bed, DollarSign, BarChart3,
-  Settings, HelpCircle, LogOut, ChevronLeft, ChevronRight,
-  UserCog, Clock, FileCheck
-} from 'lucide-react';
+import React, { useState } from "react";
+import {
+  Home,
+  Users,
+  Calendar,
+  FileText,
+  Activity,
+  Stethoscope,
+  Pill,
+  Bed,
+  DollarSign,
+  BarChart3,
+  Settings,
+  HelpCircle,
+  LogOut,
+  ChevronLeft,
+  ChevronRight,
+  UserCog,
+  Clock,
+  FileCheck,
+} from "lucide-react";
 
 export default function HospitalSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeItem, setActiveItem] = useState('dashboard');
+  const [activeItem, setActiveItem] = useState("dashboard");
 
   const menuSections = [
     {
-      title: 'Main',
+      title: "Main",
       items: [
-        { id: 'dashboard', label: 'Dashboard', icon: Home },
-        { id: 'appointments', label: 'Appointments', icon: Calendar },
-        { id: 'patients', label: 'Patients', icon: Users },
-      ]
+        { id: "dashboard", label: "Dashboard", icon: Home },
+        { id: "appointments", label: "Appointments", icon: Calendar },
+        { id: "patients", label: "Patients", icon: Users },
+      ],
     },
     {
-      title: 'Medical',
+      title: "Medical",
       items: [
-        { id: 'doctors', label: 'Doctors', icon: Stethoscope },
-        { id: 'departments', label: 'Departments', icon: Bed },
-        { id: 'lab', label: 'Lab Results', icon: Activity },
-        { id: 'pharmacy', label: 'Pharmacy', icon: Pill },
-        { id: 'records', label: 'Medical Records', icon: FileText },
-      ]
+        { id: "doctors", label: "Doctors", icon: Stethoscope },
+        { id: "departments", label: "Departments", icon: Bed },
+        { id: "lab", label: "Lab Results", icon: Activity },
+        { id: "pharmacy", label: "Pharmacy", icon: Pill },
+        { id: "records", label: "Medical Records", icon: FileText },
+      ],
     },
     {
-      title: 'Management',
+      title: "Management",
       items: [
-        { id: 'staff', label: 'Staff', icon: UserCog },
-        { id: 'billing', label: 'Billing', icon: DollarSign },
-        { id: 'reports', label: 'Reports', icon: BarChart3 },
-        { id: 'schedule', label: 'Schedules', icon: Clock },
-      ]
-    }
+        { id: "staff", label: "Staff", icon: UserCog },
+        { id: "billing", label: "Billing", icon: DollarSign },
+        { id: "reports", label: "Reports", icon: BarChart3 },
+        { id: "schedule", label: "Schedules", icon: Clock },
+      ],
+    },
   ];
 
   const bottomItems = [
-    { id: 'settings', label: 'Settings', icon: Settings },
-    { id: 'help', label: 'Help & Support', icon: HelpCircle },
-    { id: 'logout', label: 'Logout', icon: LogOut },
+    { id: "settings", label: "Settings", icon: Settings },
+    { id: "help", label: "Help & Support", icon: HelpCircle },
+    { id: "logout", label: "Logout", icon: LogOut },
   ];
 
   return (
-    <div 
+    <div
       className={`bg-gray-900 text-gray-100 h-screen flex flex-col transition-all duration-300 ${
-        isCollapsed ? 'w-20' : 'w-64'
+        isCollapsed ? "w-20" : "w-64"
       }`}
     >
       {/* Header */}
@@ -65,7 +79,7 @@ export default function HospitalSidebar() {
             </div>
           </div>
         )}
-        
+
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-2 hover:bg-gray-800 rounded-lg transition-colors ml-auto"
@@ -91,19 +105,23 @@ export default function HospitalSidebar() {
               {section.items.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeItem === item.id;
-                
+
                 return (
                   <button
                     key={item.id}
                     onClick={() => setActiveItem(item.id)}
                     className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                       isActive
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'text-gray-300 hover:bg-gray-800 hover:text-white'
-                    } ${isCollapsed ? 'justify-center' : ''}`}
-                    title={isCollapsed ? item.label : ''}
+                        ? "bg-blue-600 text-white shadow-lg"
+                        : "text-gray-300 hover:bg-gray-800 hover:text-white"
+                    } ${isCollapsed ? "justify-center" : ""}`}
+                    title={isCollapsed ? item.label : ""}
                   >
-                    <Icon className={${isCollapsed ? 'w-6 h-6' : 'w-5 h-5'} flex-shrink-0} />
+                    <Icon
+                      className={`${
+                        isCollapsed ? "w-6 h-6" : "w-5 h-5"
+                      } flex-shrink-0`}
+                    />
                     {!isCollapsed && (
                       <span className="text-sm font-medium">{item.label}</span>
                     )}
@@ -119,17 +137,21 @@ export default function HospitalSidebar() {
       <div className="border-t border-gray-800 p-2">
         {bottomItems.map((item) => {
           const Icon = item.icon;
-          
+
           return (
             <button
               key={item.id}
               onClick={() => setActiveItem(item.id)}
               className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors text-gray-300 hover:bg-gray-800 hover:text-white ${
-                isCollapsed ? 'justify-center' : ''
+                isCollapsed ? "justify-center" : ""
               }`}
-              title={isCollapsed ? item.label : ''}
+              title={isCollapsed ? item.label : ""}
             >
-              <Icon className={${isCollapsed ? 'w-6 h-6' : 'w-5 h-5'} flex-shrink-0} />
+              <Icon
+                className={`${
+                  isCollapsed ? "w-6 h-6" : "w-5 h-5"
+                } flex-shrink-0`}
+              />
               {!isCollapsed && (
                 <span className="text-sm font-medium">{item.label}</span>
               )}
@@ -154,4 +176,4 @@ export default function HospitalSidebar() {
       )}
     </div>
   );
-}  
+}
